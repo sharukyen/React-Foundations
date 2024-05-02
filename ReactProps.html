@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <div id="app"></div>
+        <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script type="text/jsx">
+            const app = document.getElementById('app');
+            function Header(props) {
+                console.log(props); // props is an object. { title: "React Props" }
+                return <h1>Chapter 6</h1>
+            }
+
+            function Footer({ title }) {
+                console.log(title); // "React Props"
+                return <h1>Footer</h1>;
+            }
+
+            function Content({ title }) {
+                console.log(title);
+                return <h1>{title}</h1>; // curly braces as a way to enter "JavaScript land" while you are in "JSX land". You can add any JavaScript expression
+            }
+
+            /*
+            function Example(props) {
+                return <h1>{props.title}</h1>; // object with dot notation
+            }
+
+            function Example({ title }) {
+                return <h1>{`Cool ${title}`}</h1>; // template literal
+            }
+            function createTitle(title) {
+                if (title) {
+                    return title;
+                } else {
+                    return 'Default title';
+                }
+            }
+
+            function Example({ title }) {
+                return <h1>{createTitle(title)}</h1>; // returned value of a function
+            }
+
+            function Example({ title }) {
+                return <h1>{title ? title : 'Default Title'}</h1>; // ternary
+            }*/
+
+            function HomePage() {
+                const names = ['Ada Lovelace', 'Grace Hopper', 'Margaret Hamilton'];
+
+                return (<div><Header title="React Props"/><Content title="React Props"/><Footer title="React Props"/><ul>
+                        {names.map((name) => (
+                            <li key={name}>{name}</li>
+                        ))}
+                        </ul>
+                    </div>
+                );
+            }
+
+            const root = ReactDOM.createRoot(app);
+            root.render(<HomePage />);
+        </script>
+    </body>
+</html>
